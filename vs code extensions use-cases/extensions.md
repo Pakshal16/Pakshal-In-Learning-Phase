@@ -1,0 +1,10 @@
+cweijan.dbclient-jdbc
+cweijan.vscode-postgresql-client2
+esbenp.prettier-vscode
+ms-python.debugpy
+ms-python.python
+ms-python.vscode-pylance
+pkief.material-icon-theme
+plibither8.remove-comments
+pnp.polacode
+ritwickdey.liveserver
