@@ -1,0 +1,62 @@
+# Byte-compiled Python files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Flask/Django cache files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+
+# Virtual environment directory
+venv/
+env/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Node modules (if you're using Node.js)
+node_modules/
+
+# Compiled files
+*.o
+*.out
+*.class
+*.exe
+*.dll
+
+# Dependency directories
+node_modules/
+bower_components/
+.venv/
+.env/
+.venv/
+
+# Deployment files
+*.env
+*.local
+
+# Ignore all .env files except example.env
+.env.*
+!.env.example
+
+# Static and media files (for Django or Flask)
+staticfiles/
+media/
+static/
