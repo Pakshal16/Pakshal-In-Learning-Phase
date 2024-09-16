@@ -1,4 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import (
+    Flask, 
+    request, 
+    jsonify, 
+    send_file
+)
 import os
 
 
@@ -27,6 +32,28 @@ def submit_form():
         return jsonify({'status': 'error', 'message': 'No file received.'})
     else:
         return jsonify({'status': 'error', 'message': 'Only POST requests are allowed.'})
+
+
+@app.route('/api/upload_excel/', methods=['POST'])
+def upload_excel():
+    if 'excel_file' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No file part in the request'})
+
+    excel_file = request.files['excel_file']
+
+    if excel_file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No file selected'})
+
+    # Check if the file is an Excel file (XLSX or XLS)
+    if excel_file and excel_file.content_type in ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']:
+        excel_file_path = os.path.join(app.config['UPLOAD_FOLDER'], excel_file.filename)
+        excel_file.save(excel_file_path)
+        print(f"Saved Excel file: {excel_file.filename}")
+
+        # Send the Excel file back to the user
+        return send_file(excel_file_path, as_attachment=True)
+    
+    return jsonify({'status': 'error', 'message': 'Invalid file format. Please upload an Excel file (.xlsx or .xls).'})
 
 
 if __name__ == '__main__':
